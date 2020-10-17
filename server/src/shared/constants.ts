@@ -18,3 +18,9 @@ export const cookieProps = Object.freeze({
         secure: (process.env.SECURE_COOKIE === 'true'),
     },
 });
+
+export const spotifyProps = Object.freeze({
+    client_id: (process.env.CLIENT_ID),
+    client_secret: (process.env.CLIENT_SECRET),
+    redirect_uri: (process.env.REDIRECT_URI),
+})

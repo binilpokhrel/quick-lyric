@@ -1,15 +1,17 @@
+import { cookieProps } from '@shared/constants';
+import logger from '@shared/Logger';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
+import helmet from 'helmet';
+import { BAD_REQUEST } from 'http-status-codes';
 import morgan from 'morgan';
 import path from 'path';
-import helmet from 'helmet';
-
-import express, { Request, Response, NextFunction } from 'express';
-import { BAD_REQUEST } from 'http-status-codes';
-import 'express-async-errors';
-
 import BaseRouter from './routes';
-import logger from '@shared/Logger';
-import { cookieProps } from '@shared/constants';
+
+
+
 
 
 // Init express
@@ -28,6 +30,7 @@ app.use(cookieParser(cookieProps.secret));
 // Show routes called in console during development
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
+    app.use(cors());
 }
 
 // Security
