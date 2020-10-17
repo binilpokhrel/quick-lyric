@@ -7,6 +7,5 @@ dist/
 
 # misc
 .DS_Store
-.env
-
-.log
+*.env
+*.log
